@@ -46,8 +46,8 @@ namespace FinalExamSaid.Areas.Admin.Controllers
                 }
                 return View(vm);
             }
-            await _signInManager.SignInAsync(user, isPersistent: false);
             await _userManager.AddToRoleAsync(user, "Admin");
+            await _signInManager.SignInAsync(user, isPersistent: false);
             return RedirectToAction("Index", "Home", new { area = "" });
         }
         /*public async Task<IActionResult> Create()
